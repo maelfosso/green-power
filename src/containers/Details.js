@@ -21,49 +21,49 @@ const Details = props => {
         title="Details"
       >
         <Row gutter={[32, 32]}>
-          <Col span={6}>
-            <Statistic title="RP" value={rp} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Puissance atteinte" value={rp} />
           </Col>
-          <Col span={6}>
-            <Statistic title="LC" value={lc} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Location compteur (FCFA)" value={lc} />
           </Col>
-          <Col span={6}>
-            <Statistic title="LT" value={lt} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Location transformateur (FCFA)" value={lt} />
           </Col>
-          <Col span={6}>
-            <Statistic title="PF" value={pf} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Prime fixe (FCFA)" value={pf} />
           </Col>
-          <Col span={6}>
-            <Statistic title="PDP" value={pdp} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Penalite de depassement de puissance souscrite" value={pdp} />
           </Col>
-          <Col span={6}>
-            <Statistic title="Pfr" value={pfr} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Perte fer (FCFA)" value={pfr} />
           </Col>
-          <Col span={6}>
-            <Statistic title="Pvh" value={pvh} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Pertes variables HP (FCFA)" value={pvh} />
           </Col>
-          <Col span={6}>
-            <Statistic title="Pvp" value={pvp} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Pertes variables pointe (FCFA)" value={pvp} />
           </Col>
-          <Col span={6}>
+          <Col xs={24} sm={24} md={12} lg={8}>
             <Statistic title="Nbh" value={nbh} />
           </Col>
-          <Col span={6}>
+          <Col xs={24} sm={24} md={12} lg={8}>
             <Statistic title="KHP" value={khp} />
           </Col>
-          <Col span={6}>
-            <Statistic title="%phiX" value={phiX} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="%cos phi extra" value={phiX} />
           </Col>
-          <Col span={6}>
-            <Statistic title="BCFP" value={bcfp} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Base de calcul (mauvais FP) (FCFA)" value={bcfp} />
           </Col>
-          <Col span={6}>
-            <Statistic title="Pfp" value={pfp} />
+          <Col xs={24} sm={24} md={12} lg={8}>
+            <Statistic title="Penalite pour mauvais FP (FCFA)" value={pfp} />
           </Col>
-          <Col span={6}>
+          <Col xs={24} sm={24} md={12} lg={8}>
             <Statistic title="FHT" value={fht} />
           </Col>
-          <Col span={6}>
+          <Col xs={24} sm={24} md={12} lg={8}>
             <Statistic title="FTT" value={ftt} />
           </Col>
         </Row>

@@ -10,7 +10,7 @@ function App() {
       <header>
         <span className="logo-wrapper">
           <i className="logo" />
-          <span>Green Power</span>
+          <span>Green Power Cameroon</span>
         </span>
       </header>
       <div className="App">
