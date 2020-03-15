@@ -46,3 +46,20 @@ header {
     }
   }
 }
+
+.App {
+  padding-top: 75px;
+  width: 50%;
+  margin: auto;
+}
+
+.Data-Entry {
+  
+  .submit {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 12px;
+  }
+}
