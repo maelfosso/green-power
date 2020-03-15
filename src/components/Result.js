@@ -1,10 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import {
   Statistic, Row, Col, PageHeader,
 } from 'antd';
 
 
-function Result() {
+const Result = props => {
+  const { results } = props;
+  const { rphp, rpp, rfht, tva, rfttc } = results;
+
   return (
     <div className="Result">
       <PageHeader
@@ -12,19 +17,19 @@ function Result() {
       >
         <Row gutter={[48, 16]} justify="space-between">
           <Col>
-            <Statistic title="Prix du Kwh hors pointe (FCFA)" value={60} />
+            <Statistic title="Prix du Kwh hors pointe (FCFA)" value={rphp} />
           </Col>
           <Col>
-            <Statistic title="Prix du Kwh pointe (FCFA)" value={85} />
+            <Statistic title="Prix du Kwh pointe (FCFA)" value={rpp} />
           </Col>
           <Col>
-            <Statistic title="Facture HT (FCFA)" value={4661505} />
+            <Statistic title="Facture HT (FCFA)" value={rfht} />
           </Col>
           <Col>
-            <Statistic title="TVA" value={897340} />
+            <Statistic title="TVA" value={tva} />
           </Col>
           <Col>
-            <Statistic title="Facture TTC (FCFA)" value={5558845} />
+            <Statistic title="Facture TTC (FCFA)" value={rfttc} />
           </Col>
         </Row>
 
@@ -33,4 +38,8 @@ function Result() {
   );
 }
 
-export default Result;
+const mapStateToProps = state => ({
+  results : state.dataReducer.results
+});
+
+export default connect(mapStateToProps, null)(Result);
