@@ -91,10 +91,10 @@ const DataEntry = props => {
               <Form.Item label="Cos phi" name="cosphi">
                 <InputNumber />
               </Form.Item>
-              <Form.Item label="EHP" name="ehp">
+              <Form.Item label="Energie consommee HP" name="ehp">
                 <InputNumber />
               </Form.Item>
-              <Form.Item label="EP" name="ep">
+              <Form.Item label="Energie consommee Pointe" name="ep">
                 <InputNumber />
               </Form.Item>
             </Form>
