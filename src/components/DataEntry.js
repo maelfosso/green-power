@@ -79,7 +79,7 @@ function DataEntry() {
               <Form.Item label="Cos phi" name="cosphi">
                 <InputNumber />
               </Form.Item>
-              <Form.Item label="EMP" name="emp">
+              <Form.Item label="EHP" name="ehp">
                 <InputNumber />
               </Form.Item>
               <Form.Item label="EP" name="ep">
