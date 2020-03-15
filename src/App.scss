@@ -73,3 +73,19 @@ header {
   margin-top: 2em;
   background: #F8FAFE;
 }
+
+@media screen and (max-width: 1000px) {
+  .App {
+    padding-top: 75px;
+    width: 80%;
+    margin: auto;
+  }
+
+  .Data-Entry .ant-col {
+
+    .submit {
+      position: relative;
+      margin: 1em 0 0;
+    }
+  }
+}
