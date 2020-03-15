@@ -1,5 +1,7 @@
 import React from 'react';
-import { Statistic, Row, Col, Button, PageHeader } from 'antd';
+import {
+  Statistic, Row, Col, PageHeader,
+} from 'antd';
 
 function Details() {
   return (
@@ -54,7 +56,7 @@ function Details() {
             <Statistic title="FTT" value={5558845} />
           </Col>
         </Row>
-      
+
       </PageHeader>
     </div>
   );

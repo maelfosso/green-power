@@ -1,5 +1,7 @@
 import React from 'react';
-import { Statistic, Row, Col, Button, PageHeader } from 'antd';
+import {
+  Statistic, Row, Col, PageHeader,
+} from 'antd';
 
 
 function Result() {
@@ -25,7 +27,7 @@ function Result() {
             <Statistic title="Facture TTC (FCFA)" value={5558845} />
           </Col>
         </Row>
-      
+
       </PageHeader>
     </div>
   );

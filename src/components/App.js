@@ -12,10 +12,7 @@ function App() {
           <i className="logo" />
           <span>Green Power</span>
         </span>
-        <div className="button">
-        </div>
       </header>
-      
       <div className="App">
         <DataEntry />
         <Result />

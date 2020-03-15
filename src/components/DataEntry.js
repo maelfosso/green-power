@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Row, Col, 
+import {
+  Row, Col,
   Card,
   Radio,
   Form,
-  Input,
   InputNumber,
   Button,
 } from 'antd';
@@ -30,19 +29,19 @@ function DataEntry() {
               onValuesChange={onFormLayoutChange}
               size={componentSize}
             >
-              <Form.Item 
+              <Form.Item
                 label="Puissance souscrite (KW)"
                 name="pscrite"
               >
                 <InputNumber />
               </Form.Item>
-              <Form.Item 
+              <Form.Item
                 label="Puissance transformateur (KVA)"
                 name="ptrans"
               >
                 <InputNumber />
               </Form.Item>
-              <Form.Item 
+              <Form.Item
                 label="Puissance transformateur facturee (KVA)"
                 name="ptfact"
               >
@@ -91,7 +90,7 @@ function DataEntry() {
           <div className="submit">
             <Button type="primary" block>Calculate</Button>
           </div>
-          
+
         </Col>
       </Row>
     </div>
