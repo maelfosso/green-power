@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
 import {
   Row, Col,
   Card,
@@ -8,11 +10,26 @@ import {
   Button,
 } from 'antd';
 
-function DataEntry() {
+import { simulate } from '../actions';
+
+const DataEntry = (props) => {
   const [componentSize, setComponentSize] = useState('small');
+  const [contratForm] = Form.useForm();
+  const [factureForm] = Form.useForm();
 
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
+  };
+
+  const onCalculate = async () => {
+    const { simulate } = props;
+
+    simulate({ 
+      contrat: await contratForm.validateFields(),
+      facture: await factureForm.validateFields()
+    });
+
+    console.log("simulate...");
   };
 
   return (
@@ -22,11 +39,11 @@ function DataEntry() {
           <Card title="Contrat abonnement">
             <Form
               name="contrat"
+              form={contratForm}
               layout="vertical"
               initialValues={{
                 size: componentSize,
               }}
-              onValuesChange={onFormLayoutChange}
               size={componentSize}
             >
               <Form.Item
@@ -66,11 +83,11 @@ function DataEntry() {
           <Card title="Facture">
             <Form
               name="facture"
+              form={factureForm}
               layout="vertical"
               initialValues={{
                 size: componentSize,
               }}
-              onValuesChange={onFormLayoutChange}
               size={componentSize}
             >
               <Form.Item label="Indicateur de puissance" name="ipower">
@@ -88,7 +105,7 @@ function DataEntry() {
             </Form>
           </Card>
           <div className="submit">
-            <Button type="primary" block>Calculate</Button>
+            <Button type="primary" block onClick={onCalculate}>Calculate</Button>
           </div>
 
         </Col>
@@ -97,4 +114,8 @@ function DataEntry() {
   );
 }
 
-export default DataEntry;
+const mapDispatchToProps = dispatch => ({
+  simulate: inputs => dispatch(simulate(inputs))
+});
+
+export default connect(null, mapDispatchToProps)(DataEntry);
