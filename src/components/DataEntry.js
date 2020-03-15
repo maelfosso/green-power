@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import {
   Row, Col,
@@ -12,24 +13,18 @@ import {
 
 import { simulate } from '../actions';
 
-const DataEntry = (props) => {
-  const [componentSize, setComponentSize] = useState('small');
+const DataEntry = props => {
+  const [componentSize] = useState('small');
   const [contratForm] = Form.useForm();
   const [factureForm] = Form.useForm();
-
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
-  };
 
   const onCalculate = async () => {
     const { simulate } = props;
 
-    simulate({ 
+    simulate({
       contrat: await contratForm.validateFields(),
-      facture: await factureForm.validateFields()
+      facture: await factureForm.validateFields(),
     });
-
-    console.log("simulate...");
   };
 
   return (
@@ -112,10 +107,14 @@ const DataEntry = (props) => {
       </Row>
     </div>
   );
-}
+};
+
+DataEntry.propTypes = {
+  simulate: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = dispatch => ({
-  simulate: inputs => dispatch(simulate(inputs))
+  simulate: inputs => dispatch(simulate(inputs)),
 });
 
 export default connect(null, mapDispatchToProps)(DataEntry);
