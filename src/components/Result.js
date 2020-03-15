@@ -27,7 +27,6 @@ function Result() {
         </Row>
       
       </PageHeader>
-
     </div>
   );
 }
