@@ -18,21 +18,21 @@ const Result = props => {
       <PageHeader
         title="Result"
       >
-        <Row gutter={[48, 16]} justify="space-between">
-          <Col>
-            <Statistic title="Prix du Kwh hors pointe (FCFA)" value={rphp} />
+        <Row justify="space-between">
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Statistic title="Tarif hors pointe (FCFA/KWh)" value={rphp} />
           </Col>
-          <Col>
-            <Statistic title="Prix du Kwh pointe (FCFA)" value={rpp} />
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Statistic title="Tarif pointe (FCFA/KWh)" value={rpp} />
           </Col>
-          <Col>
-            <Statistic title="Facture HT (FCFA)" value={rfht} />
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Statistic title="Montant HT (FCFA)" value={rfht} />
           </Col>
-          <Col>
+          <Col xs={24} sm={24} md={12} lg={12}>
             <Statistic title="TVA" value={tva} />
           </Col>
-          <Col>
-            <Statistic title="Facture TTC (FCFA)" value={rfttc} />
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Statistic title="Montant TTC (FCFA)" value={rfttc} />
           </Col>
         </Row>
 

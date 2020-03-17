@@ -29,8 +29,8 @@ const DataEntry = props => {
 
   return (
     <div className="Data-Entry">
-      <Row gutter={24}>
-        <Col span={12}>
+      <Row gutter={[16, 16]} justify="space-between">
+        <Col flex={1} xs={32} sm={32} md={12} lg={12}>
           <Card title="Contrat abonnement">
             <Form
               name="contrat"
@@ -74,7 +74,7 @@ const DataEntry = props => {
             </Form>
           </Card>
         </Col>
-        <Col span={12}>
+        <Col flex={1} xs={32} sm={32} md={12} lg={12}>
           <Card title="Facture">
             <Form
               name="facture"
@@ -91,10 +91,10 @@ const DataEntry = props => {
               <Form.Item label="Cos phi" name="cosphi">
                 <InputNumber />
               </Form.Item>
-              <Form.Item label="EHP" name="ehp">
+              <Form.Item label="Energie consommee HP" name="ehp">
                 <InputNumber />
               </Form.Item>
-              <Form.Item label="EP" name="ep">
+              <Form.Item label="Energie consommee Pointe" name="ep">
                 <InputNumber />
               </Form.Item>
             </Form>
@@ -102,7 +102,6 @@ const DataEntry = props => {
           <div className="submit">
             <Button type="primary" block onClick={onCalculate}>Calculate</Button>
           </div>
-
         </Col>
       </Row>
     </div>
