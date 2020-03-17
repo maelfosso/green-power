@@ -67,7 +67,6 @@ const dataReducer = (state = initialState, action) => {
       + (facture.ehp + pvh + pfr) * khp
       + (facture.ep + pvp) * 85
       + pfp + lc + lt;
-
       const tva = fht * 0.1925;
 
       return {
@@ -75,6 +74,7 @@ const dataReducer = (state = initialState, action) => {
 
         details: {
           rp,
+          lc,
           lt,
           pf,
           pdp,
