@@ -2,7 +2,6 @@ import React from 'react';
 import '../App.scss';
 import DataEntry from '../containers/DataEntry';
 import Result from '../containers/Result';
-import Details from '../containers/Details';
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
       <div className="App">
         <DataEntry />
         <Result />
-        <Details />
+        {/* <Details /> */}
       </div>
     </div>
   );

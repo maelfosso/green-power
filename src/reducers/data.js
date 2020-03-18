@@ -33,6 +33,26 @@ const dataReducer = (state = initialState, action) => {
 
       const { lc } = state.details;
 
+      let cosphi;
+      if (facture.loctrans == "mt_mt") {
+        cosphi = Math.cos(
+          Math.atan(
+            (facture.erahp + facture.erap) / (facture.eahp + facture.eap)
+              + 0.01
+          )
+        );
+      } else if (facture.loctrans == "mt_bt") {
+        cosphi = Math.cos(
+          Math.atan(
+            (facture.erahp + facture.erap) / (facture.eahp + facture.eap)
+              + 0.125
+          )
+        );
+      } else {
+        cosphi = 0.0;
+      }
+      cosphi = Math.ceil(cosphi, 2);
+
       const rp = Math.ceil(facture.ipower / 5.0) * 5;
       const lt = contrat.loctrans === 'oui' ? Math.max(29 * contrat.ptfact + 6700, ...[0, 9600]) : 0.0;
       const pf = Math.max(contrat.pscrite) * 3700;
@@ -56,7 +76,7 @@ const dataReducer = (state = initialState, action) => {
       } else {
         khp = 65;
       }
-      const phiX = facture.cosphi > 0.8 ? 0 : 0.8 - facture.cosphi;
+      const phiX = cosphi > 0.8 ? 0 : 0.8 - cosphi;
       const bcfp = sum([
         facture.ehp * khp, facture.ep * 85,
         (pfr + pvh) * khp, pvp * 85,
