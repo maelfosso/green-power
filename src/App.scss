@@ -14,7 +14,8 @@ header {
     box-shadow: 0 2px 8px rgba(229, 229, 229, 0.5);
   }
   .logo {
-    background: url(https://gw.alipayobjects.com/zos/rmsportal/sDUzcQUsFXjBgcHNCuiv.svg) no-repeat center;
+    background: url('./logo.svg') no-repeat center;
+    background-size: contain;
     display: inline-block;
     width: 40px;
     height: 64px;
@@ -62,9 +63,80 @@ header {
   }
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.margin-bottom {
+  margin-bottom: 1em;
+}
+
 .Result {
   margin-top: 2em;
-  background: #ececec;
+  // background: #ececec;
+  border: 1px solid black;
+  font-size: 12px;
+
+  .section-0 {
+    padding: 0.25em;
+  }
+
+  .section-1 {
+    
+    background: #ececec;
+    padding: 0.25em;
+    margin-bottom: 1em;
+
+    div.ant-col div.ant-row {
+      // background-color: yellow;
+      margin-right: 5px;
+
+      div.ant-col:first-child {
+        // background-color: yellowgreen;
+        // font-size: 12px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .section-2 {
+    padding: 0.25em;
+    margin-bottom: 1em;
+
+    div.ant-row:first-child {
+      font-weight: bold;
+    }
+
+    .ant-row {
+      text-align: right;
+    }
+
+    div.ant-row:first-child {
+      text-align: left;
+    }
+
+    .ant-row .ant-col:first-child {
+      text-align: left;
+    }
+  }
+
+  .section-3 {
+    margin-top: 2em;
+    padding: 0.25em;
+    margin-bottom: 1em;
+
+    .ant-row {
+      text-align: right;
+    }
+
+    .ant-row .ant-col:first-child {
+      text-align: left;
+    }
+  }
 }
 
 .Details {
@@ -75,7 +147,7 @@ header {
 @media screen and (max-width: 1000px) {
   .App {
     padding-top: 75px;
-    width: 80%;
+    width: 95%;
     margin: auto;
   }
 
