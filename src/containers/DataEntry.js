@@ -91,40 +91,38 @@ const DataEntry = props => {
           </Form.Item>
         </Form>
       </Card>
-      <Row gutter={[16, 16]} justify="space-between">
-        <Col flex={1} xs={32} sm={32} md={12} lg={12}>
-          
-        </Col>
-        <Col flex={1} xs={32} sm={32} md={12} lg={12}>
-          <Card title="Facture">
-            <Form
-              name="facture"
-              form={factureForm}
-              layout="vertical"
-              initialValues={{
-                size: componentSize,
-              }}
-              size={componentSize}
-            >
-              <Form.Item label="Indicateur de puissance" name="ipower">
-                <InputNumber />
-              </Form.Item>
-              <Form.Item label="Cos phi" name="cosphi">
-                <InputNumber />
-              </Form.Item>
-              <Form.Item label="Energie consommee HP" name="ehp">
-                <InputNumber />
-              </Form.Item>
-              <Form.Item label="Energie consommee Pointe" name="ep">
-                <InputNumber />
-              </Form.Item>
-            </Form>
-          </Card>
-          <div className="submit">
-            <Button type="primary" block onClick={onCalculate}>Calculate</Button>
-          </div>
-        </Col>
-      </Row>
+      <Card title="Facture">
+        <Form
+          { ...layout }
+          labelAlign="left"
+          name="facture"
+          form={factureForm}
+          layout="horizontal"
+          initialValues={{
+            size: componentSize,
+          }}
+          size={componentSize}
+        >
+          <Form.Item label="Indicateur de puissance" name="ipower">
+            <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')}/>
+          </Form.Item>
+          <Form.Item label="Energie active HP" name="eahp">
+            <InputNumber />
+          </Form.Item>
+          <Form.Item label="Energie active P" name="eap">
+            <InputNumber />
+          </Form.Item>
+          <Form.Item label="Energie reactive HP" name="erahp">
+            <InputNumber />
+          </Form.Item>
+          <Form.Item label="Energie reactive P" name="erap">
+            <InputNumber />
+          </Form.Item>
+        </Form>
+      </Card>
+      <div className="submit">
+        <Button type="primary" block onClick={onCalculate}>Calculate</Button>
+      </div>
     </div>
   );
 };
