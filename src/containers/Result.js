@@ -123,98 +123,128 @@ const Result = props => {
           <Col md={5}>Montant (CFA)</Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5} offset={14}>Extra 10% zone Franche client</Col>
+          <Col xs={{ span: 19, offset: 0}} md={{ span: 5, offset:14}}>Extra 10% zone Franche client</Col>
           <Col md={5}>0</Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5}><Text>Energie Active Hors pointe (kwh)</Text></Col>
-          <Col md={2}><Text>{eahp}</Text></Col>
-          <Col md={2}><Text>70</Text></Col>
-          <Col md={5}><Text>{ eahp * 70 }</Text></Col>
-          <Col md={5}><Text>Extra 10% Franche pouvoir public</Text></Col>
-          <Col md={5}><Text>-</Text></Col>
+          <Col xs={24} md={5}>
+            <Row span={24}>
+              <Col xs={12} md={0}><Text strong>Elements de factures</Text></Col>
+              <Col xs={12} md={24}><Text>Energie Active Hors pointe (kwh)</Text></Col>
+            </Row>
+          </Col>
+          <Col xs={24} md={2}>
+            <Row span={24}>
+              <Col xs={12} md={0}><Text strong>Qte</Text></Col>
+              <Col xs={12} md={24}><Text>{eahp}</Text></Col>
+            </Row>
+          </Col>
+          <Col xs={24} md={2}>
+            <Row span={24}>
+              <Col xs={12} md={0}><Text strong>Tarif</Text></Col>
+              <Col xs={12} md={24}><Text>70</Text></Col>
+            </Row>
+          </Col>
+          <Col xs={24} md={5}>
+            <Row span={24}>
+              <Col xs={12} md={0}><Text strong>Montant (CFA)</Text></Col>
+              <Col xs={12} md={24}><Text>{ eahp * 70 }</Text></Col>
+            </Row>
+          </Col>
+          <Col xs={24} md={5}>
+            <Row span={24}>
+              <Col xs={12} md={0}><Text strong>Montant a Payer</Text></Col>
+              <Col xs={12} md={24}><Text>Extra 10% Franche pouvoir public</Text></Col>
+            </Row>
+          </Col>
+          <Col xs={24} md={5}>
+            <Row span={24}>
+              <Col xs={12} md={0}><Text strong>Montant (CFA)</Text></Col>
+              <Col xs={12} md={24}><Text><Text>-</Text></Text></Col>
+            </Row>
+          </Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5}><Text>Energie active pointe (kwh)</Text></Col>
-          <Col md={2}><Text>{eap}</Text></Col>
-          <Col md={2}><Text>85</Text></Col>
-          <Col md={5}><Text>{eap * 85}</Text></Col>
-          <Col md={5}><Text>Montant total hors taxes</Text></Col>
-          <Col md={5}><Text>{fht}</Text></Col>
+          <Col xs={24} md={5}><Text>Energie active pointe (kwh)</Text></Col>
+          <Col xs={24} md={2}><Text>{eap}</Text></Col>
+          <Col xs={24} md={2}><Text>85</Text></Col>
+          <Col xs={24} md={5}><Text>{eap * 85}</Text></Col>
+          <Col xs={24} md={5}><Text>Montant total hors taxes</Text></Col>
+          <Col xs={24} md={5}><Text>{fht}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5}><Text>Pertes fer (kwh)</Text></Col>
-          <Col md={2}><Text>{pfr}</Text></Col>
-          <Col md={2}><Text>70</Text></Col>
-          <Col md={5}><Text>{pfr * 70}</Text></Col>
-          <Col md={5}><Text>Taxes</Text></Col>
-          <Col md={5}><Text>{tva}</Text></Col>
+          <Col xs={24} md={5}><Text>Pertes fer (kwh)</Text></Col>
+          <Col xs={24} md={2}><Text>{pfr}</Text></Col>
+          <Col xs={24} md={2}><Text>70</Text></Col>
+          <Col xs={24} md={5}><Text>{pfr * 70}</Text></Col>
+          <Col xs={24} md={5}><Text>Taxes</Text></Col>
+          <Col xs={24} md={5}><Text>{tva}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5}><Text>Pertes variables hp (kwh)</Text></Col>
-          <Col md={2}><Text>{pvh}</Text></Col>
-          <Col md={2}><Text>70</Text></Col>
-          <Col md={5}><Text>{pvh * 70}</Text></Col>
-          <Col md={5}><Text>Autres/Others</Text></Col>
-          <Col md={5}><Text>-</Text></Col>
+          <Col xs={24} md={5}><Text>Pertes variables hp (kwh)</Text></Col>
+          <Col xs={24} md={2}><Text>{pvh}</Text></Col>
+          <Col xs={24} md={2}><Text>70</Text></Col>
+          <Col xs={24} md={5}><Text>{pvh * 70}</Text></Col>
+          <Col xs={24} md={5}><Text>Autres/Others</Text></Col>
+          <Col xs={24} md={5}><Text>-</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5}><Text>Pertes variables p (Kwh)</Text></Col>
-          <Col md={2}><Text>{pvp}</Text></Col>
-          <Col md={2}><Text>85</Text></Col>
-          <Col md={5}><Text>{pvp * 85}</Text></Col>
-          <Col md={5}><Text>Montant hors taxes</Text></Col>
-          <Col md={5}><Text>{fht}</Text></Col>
+          <Col xs={24} md={5}><Text>Pertes variables p (Kwh)</Text></Col>
+          <Col xs={24} md={2}><Text>{pvp}</Text></Col>
+          <Col xs={24} md={2}><Text>85</Text></Col>
+          <Col xs={24} md={5}><Text>{pvp * 85}</Text></Col>
+          <Col xs={24} md={5}><Text>Montant hors taxes</Text></Col>
+          <Col xs={24} md={5}><Text>{fht}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5}><Text>Location compteur</Text></Col>
-          <Col md={2}><Text>{lc}</Text></Col>
-          <Col md={2}><Text>0</Text></Col>
-          <Col md={5}><Text>-</Text></Col>
-          <Col md={5}><Text>TVA sur Autres</Text></Col>
-          <Col md={5}><Text /></Col>
+          <Col xs={24} md={5}><Text>Location compteur</Text></Col>
+          <Col xs={24} md={2}><Text>{lc}</Text></Col>
+          <Col xs={24} md={2}><Text>0</Text></Col>
+          <Col xs={24} md={5}><Text>-</Text></Col>
+          <Col xs={24} md={5}><Text>TVA sur Autres</Text></Col>
+          <Col xs={24} md={5}><Text /></Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5}><Text>Location transformateurs</Text></Col>
-          <Col md={2}><Text /></Col>
-          <Col md={2}><Text>{lt}</Text></Col>
-          <Col md={5}><Text>{lt}</Text></Col>
-          <Col md={5}><Text>TVA client</Text></Col>
-          <Col md={5}><Text>{tva}</Text></Col>
+          <Col xs={24} md={5}><Text>Location transformateurs</Text></Col>
+          <Col xs={24} md={2}><Text /></Col>
+          <Col xs={24} md={2}><Text>{lt}</Text></Col>
+          <Col xs={24} md={5}><Text>{lt}</Text></Col>
+          <Col xs={24} md={5}><Text>TVA client</Text></Col>
+          <Col xs={24} md={5}><Text>{tva}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5}><Text>Prime fixe</Text></Col>
-          <Col md={2}><Text /></Col>
-          <Col md={2}><Text>{pf}</Text></Col>
-          <Col md={5}><Text>{pf}</Text></Col>
-          <Col md={5}><Text /></Col>
-          <Col md={5}><Text /></Col>
+          <Col xs={24} md={5}><Text>Prime fixe</Text></Col>
+          <Col xs={24} md={2}><Text /></Col>
+          <Col xs={24} md={2}><Text>{pf}</Text></Col>
+          <Col xs={24} md={5}><Text>{pf}</Text></Col>
+          <Col xs={24} md={5}><Text /></Col>
+          <Col xs={24} md={5}><Text /></Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col md={5}><Text>Depassement de puissance</Text></Col>
-          <Col md={2}><Text /></Col>
-          <Col md={2}><Text>0</Text></Col>
-          <Col md={5}><Text>-</Text></Col>
-          <Col md={5}><Text>MONTANT TOTAL FACTURE</Text></Col>
-          <Col md={5}><Text>{ftt}</Text></Col>
+          <Col xs={24} md={5}><Text>Depassement de puissance</Text></Col>
+          <Col xs={24} md={2}><Text /></Col>
+          <Col xs={24} md={2}><Text>0</Text></Col>
+          <Col xs={24} md={5}><Text>-</Text></Col>
+          <Col xs={24} md={5}><Text>MONTANT TOTAL FACTURE</Text></Col>
+          <Col xs={24} md={5}><Text>{ftt}</Text></Col>
         </Row>
       </div>
       <div className="section-3">
         <Row>
-          <Col md={5}><Text>Base de calcul (mauvais FP)</Text></Col>
-          <Col md={2}><Text /></Col>
-          <Col md={2}><Text>{bcfp}</Text></Col>
-          <Col md={5}><Text>{bcfp}</Text></Col>
-          <Col md={5} />
-          <Col md={5} />
+          <Col xs={24} md={5}><Text>Base de calcul (mauvais FP)</Text></Col>
+          <Col xs={24} md={2}><Text /></Col>
+          <Col xs={24} md={2}><Text>{bcfp}</Text></Col>
+          <Col xs={24} md={5}><Text>{bcfp}</Text></Col>
+          <Col xs={24} md={5} />
+          <Col xs={24} md={5} />
         </Row>
         <Row>
-          <Col md={5}><Text>Penalites pour mauvais F.P.</Text></Col>
-          <Col md={2}><Text /></Col>
-          <Col md={2}><Text>{pfp}</Text></Col>
-          <Col md={5}><Text>{pfp}</Text></Col>
-          <Col md={5} />
-          <Col md={5} />
+          <Col xs={24} md={5}><Text>Penalites pour mauvais F.P.</Text></Col>
+          <Col xs={24} md={2}><Text /></Col>
+          <Col xs={24} md={2}><Text>{pfp}</Text></Col>
+          <Col xs={24} md={5}><Text>{pfp}</Text></Col>
+          <Col xs={24} md={5} />
+          <Col xs={24} md={5} />
         </Row>
       </div>
     </div>
