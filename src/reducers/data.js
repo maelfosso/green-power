@@ -17,7 +17,7 @@ const initialState = {
     pfp: 0,
     fht: 0,
     ftt: 0,
-    cosphi: 0
+    cosphi: 0,
   },
 
   results: {
@@ -25,12 +25,12 @@ const initialState = {
   },
 
   ffacture: {
-    erahp: 0, erap: 0, eahp: 0, eap: 0, ipower: 0
+    erahp: 0, erap: 0, eahp: 0, eap: 0, ipower: 0,
   },
 
   fcontrat: {
-    pscrite: 0, pstrans: 0, typecontrat: "", loctrans: ""
-  }
+    pscrite: 0, pstrans: 0, typecontrat: '', loctrans: '',
+  },
 
 };
 
@@ -44,19 +44,19 @@ const dataReducer = (state = initialState, action) => {
       const { lc } = state.details;
 
       let cosphi;
-      if (contrat.loctrans == "mt_mt") {
+      if (contrat.loctrans === 'mt_mt') {
         cosphi = Math.cos(
           Math.atan(
             (facture.erahp + facture.erap) / (facture.eahp + facture.eap)
-              + 0.01
-          )
+              + 0.01,
+          ),
         );
-      } else if (contrat.loctrans == "mt_bt") {
+      } else if (contrat.loctrans === 'mt_bt') {
         cosphi = Math.cos(
           Math.atan(
             (facture.erahp + facture.erap) / (facture.eahp + facture.eap)
-              + 0.125
-          )
+              + 0.125,
+          ),
         );
       } else {
         cosphi = 0.0;
@@ -119,7 +119,7 @@ const dataReducer = (state = initialState, action) => {
           pfp,
           fht,
           ftt: Math.ceil(fht * (0.1925 + 1), 0),
-          cosphi
+          cosphi,
         },
 
         results: {
@@ -132,8 +132,8 @@ const dataReducer = (state = initialState, action) => {
 
         fcontrat: contrat,
 
-        ffacture: facture
-        
+        ffacture: facture,
+
       };
     }
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import {
   Card,
   Radio,
@@ -12,6 +11,8 @@ import {
 
 import { simulate } from '../actions';
 
+/* eslint-disable react/jsx-props-no-spreading */
+
 const DataEntry = props => {
   const [componentSize] = useState('small');
   const [contratForm] = Form.useForm();
@@ -21,17 +22,11 @@ const DataEntry = props => {
     labelCol: {
       xs: { span: 12 },
       sm: { span: 16 },
-      md: { span: 16 }
+      md: { span: 16 },
     },
     wrapperCol: {
       xs: { span: 12 },
-      sm: { span: 8 }
-    },
-  };
-  const tailLayout = {
-    wrapperCol: {
-      offset: 8,
-      span: 16,
+      sm: { span: 8 },
     },
   };
 
@@ -48,7 +43,7 @@ const DataEntry = props => {
     <div className="Data-Entry">
       <Card title="CONTRAT D'ABONNEMENT">
         <Form
-          { ...layout }
+          {...layout}
           labelAlign="left"
           name="contrat"
           form={contratForm}
@@ -62,19 +57,19 @@ const DataEntry = props => {
             label="Puissance souscrite (KW)"
             name="pscrite"
           >
-            <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')}/>
+            <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')} />
           </Form.Item>
           <Form.Item
             label="Puissance transformateur (KVA)"
             name="ptrans"
           >
-            <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')}/>
+            <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
           </Form.Item>
           <Form.Item
             label="Puissance facturee (KVA)"
             name="ptfact"
           >
-            <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')}/>
+            <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
           </Form.Item>
           <Form.Item label="Type contrat" name="typecontrat">
             <Radio.Group>
@@ -92,7 +87,7 @@ const DataEntry = props => {
       </Card>
       <Card title="Facture">
         <Form
-          { ...layout }
+          {...layout}
           labelAlign="left"
           name="facture"
           form={factureForm}
@@ -103,7 +98,7 @@ const DataEntry = props => {
           size={componentSize}
         >
           <Form.Item label="Indicateur de puissance" name="ipower">
-            <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')}/>
+            <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')} />
           </Form.Item>
           <Form.Item label="Energie active HP" name="eahp">
             <InputNumber />
