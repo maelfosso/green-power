@@ -9,21 +9,34 @@ import {
 const { Text } = Typography;
 
 const Result = props => {
-  const { results } = props;
+  const { results, details, facture, contrat } = props;
   const {
     rphp, rpp, rfht, tva, rfttc,
   } = results;
+  const {
+    rp, lc, lt, pf,
+    pdp, pfr, pvh, pvp,
+    nbh, khp, phiX, bcfp,
+    pfp, fht, ftt, cosphi
+  } = details;
+  const {
+    erahp, erap, eahp, eap, ipower
+  } = facture;
+  const {
+    pscrite, pstrans, typecontrat, loctrans
+  } = contrat;
+
 
   return (
     <div className="Result">
       <div className="section-0 margin-bottom">
         <Row>
           <Col xs={12} sm={12} md={8}><Text strong>ENERGIE Consommee HP</Text></Col>
-          <Col xs={12} sm={12} md={16} className="text-center text-md-right">15000</Col>
+          <Col xs={12} sm={12} md={16} className="text-center text-md-right">{eahp}</Col>
         </Row>
         <Row>
           <Col xs={12} sm={12} md={8}><Text strong>ENERGIE Consommee P</Text></Col>
-          <Col xs={12} sm={12} md={16} className="text-center text-md-right">198</Col>
+          <Col xs={12} sm={12} md={16} className="text-center text-md-right">{eap}</Col>
         </Row>
       </div>
       
@@ -37,15 +50,15 @@ const Result = props => {
           </Row>
           <Row justify="space-between">
             <Col>Cote compteur</Col>
-            <Col>MT/MTC</Col>
+            <Col>{typecontrat}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Cos phi</Col>
-            <Col>0.76</Col>
+            <Col>{cosphi}</Col>
           </Row>
           <Row justify="space-between">
             <Col>% Cos phi Extra</Col>
-            <Col>4%</Col>
+            <Col>{phiX}</Col>
           </Row>
         </Col>
         <Col xs={24} sm={12} md={8}>
@@ -53,11 +66,11 @@ const Result = props => {
           
           <Row justify="space-between">
             <Col>Puissance souscrite (Kw)</Col>
-            <Col>100</Col>
+            <Col>{pscrite}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Indicateur de puissance (kw)</Col>
-            <Col>43</Col>
+            <Col>{ipower}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Coefficient de puissance</Col>
@@ -65,7 +78,7 @@ const Result = props => {
           </Row>
           <Row justify="space-between">
             <Col>Puissance atteinte (kw)</Col>
-            <Col>45</Col>
+            <Col>{rp}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Depassement de puissance (Kw)</Col>
@@ -77,23 +90,23 @@ const Result = props => {
           
           <Row justify="space-between">
             <Col>Puissance Transformateurs (kva)</Col>
-            <Col>450</Col>
+            <Col>{lt}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Puissance Facturee (kva)</Col>
-            <Col>150</Col>
+            <Col>{lc}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Pertes Fer (kwh)</Col>
-            <Col>0</Col>
+            <Col>{pfr}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Pertes variables HTP (kwh)</Col>
-            <Col>0</Col>
+            <Col>{pvh}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Pertes variables P (kwh)</Col>
-            <Col>0</Col>
+            <Col>{pvp}</Col>
           </Row>             
         </Col>
       </Row>
@@ -113,47 +126,47 @@ const Result = props => {
         </Row>
         <Row span={24} gutter={8}>
           <Col md={5}><Text>Energie Active Hors pointe (kwh)</Text></Col>
-          <Col md={2}><Text>15000</Text></Col>
+          <Col md={2}><Text>{eahp}</Text></Col>
           <Col md={2}><Text>70</Text></Col>
-          <Col md={5}><Text>1 050 000</Text></Col>
+          <Col md={5}><Text>{ eahp * 70 }</Text></Col>
           <Col md={5}><Text>Extra 10% Franche pouvoir public</Text></Col>
           <Col md={5}><Text>-</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col md={5}><Text>Energie active pointe (kwh)</Text></Col>
-          <Col md={2}><Text>198</Text></Col>
+          <Col md={2}><Text>{eap}</Text></Col>
           <Col md={2}><Text>85</Text></Col>
-          <Col md={5}><Text>16 830</Text></Col>
+          <Col md={5}><Text>{eap * 85}</Text></Col>
           <Col md={5}><Text>Montant total hors taxes</Text></Col>
-          <Col md={5}><Text>1 505 353.2</Text></Col>
+          <Col md={5}><Text>{fht}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col md={5}><Text>Pertes fer (kwh)</Text></Col>
-          <Col md={2}><Text>0</Text></Col>
+          <Col md={2}><Text>{pfr}</Text></Col>
           <Col md={2}><Text>70</Text></Col>
-          <Col md={5}><Text>-</Text></Col>
+          <Col md={5}><Text>{pfr * 70}</Text></Col>
           <Col md={5}><Text>Taxes</Text></Col>
-          <Col md={5}><Text>289 780.5</Text></Col>
+          <Col md={5}><Text>{tva}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col md={5}><Text>Pertes variables hp (kwh)</Text></Col>
-          <Col md={2}><Text>0</Text></Col>
+          <Col md={2}><Text>{pvh}</Text></Col>
           <Col md={2}><Text>70</Text></Col>
-          <Col md={5}><Text>-</Text></Col>
+          <Col md={5}><Text>{pvh * 70}</Text></Col>
           <Col md={5}><Text>Autres/Others</Text></Col>
           <Col md={5}><Text>-</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col md={5}><Text>Pertes variables p (Kwh)</Text></Col>
-          <Col md={2}><Text>0</Text></Col>
+          <Col md={2}><Text>{pvp}</Text></Col>
           <Col md={2}><Text>85</Text></Col>
-          <Col md={5}><Text>-</Text></Col>
+          <Col md={5}><Text>{pvp * 85}</Text></Col>
           <Col md={5}><Text>Montant hors taxes</Text></Col>
-          <Col md={5}><Text>1 505 353.2</Text></Col>
+          <Col md={5}><Text>{fht}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col md={5}><Text>Location compteur</Text></Col>
-          <Col md={2}><Text></Text></Col>
+          <Col md={2}><Text>{lc}</Text></Col>
           <Col md={2}><Text>0</Text></Col>
           <Col md={5}><Text>-</Text></Col>
           <Col md={5}><Text>TVA sur Autres</Text></Col>
@@ -162,16 +175,16 @@ const Result = props => {
         <Row span={24} gutter={8}>
           <Col md={5}><Text>Location transformateurs</Text></Col>
           <Col md={2}><Text></Text></Col>
-          <Col md={2}><Text>11 050</Text></Col>
-          <Col md={5}><Text>11 050</Text></Col>
+          <Col md={2}><Text>{lt}</Text></Col>
+          <Col md={5}><Text>{lt}</Text></Col>
           <Col md={5}><Text>TVA client</Text></Col>
-          <Col md={5}><Text>289 780.5</Text></Col>
+          <Col md={5}><Text>{tva}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col md={5}><Text>Prime fixe</Text></Col>
           <Col md={2}><Text></Text></Col>
-          <Col md={2}><Text>370 000</Text></Col>
-          <Col md={5}><Text>370 000</Text></Col>
+          <Col md={2}><Text>{pf}</Text></Col>
+          <Col md={5}><Text>{pf}</Text></Col>
           <Col md={5}><Text></Text></Col>
           <Col md={5}><Text></Text></Col>
         </Row>
@@ -181,23 +194,23 @@ const Result = props => {
           <Col md={2}><Text>0</Text></Col> 
           <Col md={5}><Text>-</Text></Col>   
           <Col md={5}><Text>MONTANT TOTAL FACTURE</Text></Col>
-          <Col md={5}><Text>1 795 133.7</Text></Col>          
+          <Col md={5}><Text>{ftt}</Text></Col>          
         </Row>
       </div>
       <div className="section-3">
         <Row>
           <Col md={5}><Text>Base de calcul (mauvais FP)</Text></Col>
           <Col md={2}><Text></Text></Col>
-          <Col md={2}><Text>1 436 830</Text></Col>
-          <Col md={5}><Text>1 436 830</Text></Col>
+          <Col md={2}><Text>{bcfp}</Text></Col>
+          <Col md={5}><Text>{bcfp}</Text></Col>
           <Col md={5}></Col>
           <Col md={5}></Col>
         </Row>
         <Row>
           <Col md={5}><Text>Penalites pour mauvais F.P.</Text></Col>
           <Col md={2}><Text></Text></Col>
-          <Col md={2}><Text>57 473.2</Text></Col> 
-          <Col md={5}><Text>57 473</Text></Col>   
+          <Col md={2}><Text>{pfp}</Text></Col> 
+          <Col md={5}><Text>{pfp}</Text></Col>   
           <Col md={5}></Col>
           <Col md={5}></Col>
         </Row>
@@ -218,75 +231,9 @@ Result.propTypes = {
 
 const mapStateToProps = state => ({
   results: state.dataReducer.results,
+  details: state.dataReducer.details,
+  facture: state.dataReducer.ffacture,
+  contrat: state.dataReducer.fcontrat
 });
 
 export default connect(mapStateToProps, null)(Result);
-
-
-{/* <Col>
-<Text>Energie Active Hors pointe (kwh)</Text>
-<Text>Energie active pointe (kwh)</Text>
-<Text>Pertes fer (kwh)</Text>
-<Text>Pertes variables hp (kwh)</Text>
-<Text>Pertes variables p (Kwh)</Text>
-<Text>Location compteur</Text>
-<Text>Location transformateurs</Text>
-<Text>Prime fixe</Text>
-<Text>Depassement de puissance</Text>
-</Col>
-<Col>
-<Text>15000</Text>
-<Text>198</Text>
-<Text>Pertes fer (kwh)</Text>
-<Text>0</Text>
-<Text>0</Text>
-<Text>0</Text>
-<Text></Text>
-<Text></Text>
-<Text></Text>
-</Col>
-<Col>
-<Text>70</Text>
-<Text>85</Text>
-<Text>70</Text>
-<Text>70</Text>
-<Text>85</Text>
-<Text>0</Text>
-<Text>11 050</Text>
-<Text>370 000</Text>
-<Text>0</Text>            
-</Col>
-<Col>
-<Text>1 050 000</Text>
-<Text>16 830</Text>
-<Text>-</Text>
-<Text>-</Text>
-<Text>-</Text>
-<Text>-</Text>
-<Text>11 050</Text>
-<Text>370 000</Text>
-<Text>-</Text>            
-</Col>
-<Col>
-<Text>Extra 10% Franche pouvoir public</Text>
-<Text>Montant total hors taxes</Text>
-<Text>Taxes</Text>
-<Text>Autres/Others</Text>
-<Text>Montant hors taxes</Text>
-<Text>TVA sur Autres</Text>
-<Text>TVA client</Text>
-<Text></Text>
-<Text>MONTANT TOTAL FACTURE</Text>            
-</Col>
-<Col>
-<Text>-</Text>
-<Text>1 505 353.2</Text>
-<Text>289 780.5</Text>
-<Text>-</Text>
-<Text>1 505 353.2</Text>
-<Text></Text>
-<Text>289 780.5</Text>
-<Text></Text>
-<Text>1 795 133.7</Text>            
-</Col>
-</Row> */}
