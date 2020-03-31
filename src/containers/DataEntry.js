@@ -56,20 +56,23 @@ const DataEntry = props => {
           <Form.Item required
             label="Puissance souscrite (KW)"
             name="pscrite"
+            initialValues={300}
           >
             <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')} />
           </Form.Item>
           <Form.Item required
             label="Puissance transformateur (KVA)"
             name="ptrans"
+            initialValues={500}
           >
             <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
           </Form.Item>
           <Form.Item required
             label="Puissance facturee (KVA)"
             name="ptfact"
+            initialValues={0}
           >
-            <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
+            <InputNumber initialValues={0} formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
           </Form.Item>
           <Form.Item required label="Type contrat" name="typecontrat">
             <Radio.Group>

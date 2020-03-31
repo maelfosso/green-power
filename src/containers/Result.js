@@ -184,7 +184,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text>85</Text></Col>
           <Col xs={24} md={5}><Text>{eap * 85}</Text></Col>
           <Col xs={24} md={5}><Text>Extra 10% Franche pouvoir public</Text></Col>
-          <Col xs={24} md={5}><Text>{fht}</Text></Col>
+          <Col xs={24} md={5}><Text>{fht.toFixed(2)}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Pertes fer (kwh)</Text></Col>
@@ -192,7 +192,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text>70</Text></Col>
           <Col xs={24} md={5}><Text>{pfr * 70}</Text></Col>
           <Col xs={24} md={5}><Text>Montant total hors taxes</Text></Col>
-          <Col xs={24} md={5}><Text>{tva}</Text></Col>
+          <Col xs={24} md={5}><Text>{tva.toFixed(2)}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Pertes variables hp (kwh)</Text></Col>
@@ -208,7 +208,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text>85</Text></Col>
           <Col xs={24} md={5}><Text>{pvp * 85}</Text></Col>
           <Col xs={24} md={5}><Text>Autres/Others</Text></Col>
-          <Col xs={24} md={5}><Text>{fht}</Text></Col>
+          <Col xs={24} md={5}><Text>{fht.toFixed(2)}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Location compteur</Text></Col>
@@ -224,7 +224,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text>{lt}</Text></Col>
           <Col xs={24} md={5}><Text>{lt}</Text></Col>
           <Col xs={24} md={5}><Text>TVA sur Autres</Text></Col>
-          <Col xs={24} md={5}><Text>{tva}</Text></Col>
+          <Col xs={24} md={5}><Text>{tva.toFixed(2)}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Prime fixe</Text></Col>
@@ -237,8 +237,8 @@ const Result = props => {
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Depassement de puissance</Text></Col>
           <Col xs={24} md={2}><Text>{dp}</Text></Col>
-          <Col xs={24} md={2}><Text>{pdp}</Text></Col>
-          <Col xs={24} md={5}><Text>-</Text></Col>
+          <Col xs={24} md={2}><Text>3700</Text></Col>
+          <Col xs={24} md={5}><Text>{dp * 3700}</Text></Col>
           <Col xs={24} md={5}>
             {/* <Text>MONTANT TOTAL FACTURE</Text> */}
           </Col>

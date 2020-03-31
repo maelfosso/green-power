@@ -73,8 +73,8 @@ const dataReducer = (state = initialState, action) => {
       const dp = rp > contrat.pscrite ? rp - contrat.pscrite : 0;
       const pdp = dp * 3700;
       const pfr = contrat.typecontrat === 'mt_bt' ? contrat.ptrans * 0.01 * 720 : 0;
-      const pvh = contrat.typecontrat === 'mt_bt' ? Math.round(0.03 * facture.eahp, 0) : 0;
-      const pvp = contrat.typecontrat === 'mt_bt' ? Math.round(0.03 * facture.eap, 0) : 0;
+      const pvh = contrat.typecontrat === 'mt_bt' ? Math.trunc(0.03 * facture.eahp) + 1: 0;
+      const pvp = contrat.typecontrat === 'mt_bt' ? Math.trunc(0.03 * facture.eap) + 1 : 0;
       const nbh = Math.round(
         sum([facture.eahp, facture.eap, pfr, pvh, pvp])
           / Math.max(contrat.pscrite, rp),
