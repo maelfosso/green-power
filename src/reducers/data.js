@@ -41,12 +41,10 @@ const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case CALCULATE: {
       const { contrat, facture } = action.inputs;
-      console.log(contrat, facture);
 
       const { lc } = state.details;
 
       let cosphi;
-      console.log("cosphi", contrat.typecontrat);
       if (contrat.typecontrat === "mt_mt") {
         cosphi = Math.cos(
           Math.atan(
@@ -65,16 +63,17 @@ const dataReducer = (state = initialState, action) => {
         cosphi = 1;
       }
       console.log(cosphi);
-      // cosphi = Math.ceil(cosphi, 2);
+      cosphi = +cosphi.toFixed(2); 
+      console.log(cosphi);
 
       const rp = Math.ceil(facture.ipower / 5.0) * 5;
-      const lt = contrat.loctrans === 'oui' ? Math.max(29 * contrat.ptfact + 6700, ...[0, 9600]) : 0.0;
+      const lt = contrat.loctrans === 'oui' ? Math.max(29 * contrat.ptfact + 6700, 9600) : 0.0;
       const pf = Math.max(contrat.pscrite) * 3700;
       const dp = rp > contrat.pscrite ? rp - contrat.pscrite : 0;
       const pdp = dp * 3700;
       const pfr = contrat.typecontrat === 'mt_bt' ? contrat.ptrans * 0.01 * 720 : 0;
-      const pvh = contrat.typecontrat === 'mt_bt' ? Math.trunc(0.03 * facture.eahp) + 1: 0;
-      const pvp = contrat.typecontrat === 'mt_bt' ? Math.trunc(0.03 * facture.eap) + 1 : 0;
+      const pvh = contrat.typecontrat === 'mt_bt' ? Math.round(0.03 * facture.eahp, 0) : 0;
+      const pvp = contrat.typecontrat === 'mt_bt' ? Math.round(0.03 * facture.eap, 0) : 0;
       const nbh = Math.round(
         sum([facture.eahp, facture.eap, pfr, pvh, pvp])
           / Math.max(contrat.pscrite, rp),
@@ -82,28 +81,27 @@ const dataReducer = (state = initialState, action) => {
       );
 
       let khp = 0;
-      if (nbh < 200) {
-        khp = 70;
-      } else if (nbh > 200 && nbh < 400) {
-        khp = 65;
-      } else if (nbh > 401) {
+      if (nbh > 400) {
         khp = 60;
-      } else {
+      } else if (nbh > 200) {
         khp = 65;
-      }
+      } else {
+        khp = 70;
+      } 
+      
       const phiX = cosphi > 0.8 ? 0 : 0.8 - cosphi;
       const bcfp = sum([
         facture.eahp * khp, facture.eap * 85,
         (pfr + pvh) * khp, pvp * 85,
         pf,
       ]);
-
       const pfp = phiX * bcfp;
       const fht = pf + pdp
       + (facture.eahp + pvh + pfr) * khp
       + (facture.eap + pvp) * 85
       + pfp + lc + lt;
-      const tva = fht * 0.1925;
+      const tva = Math.ceil(fht * 0.1925);
+      const ftt = Math.ceil(fht + tva);
 
       return {
         ...state,
@@ -124,7 +122,7 @@ const dataReducer = (state = initialState, action) => {
           bcfp,
           pfp,
           fht,
-          ftt: Math.ceil(fht * (0.1925 + 1), 0),
+          ftt,
           cosphi,
         },
 

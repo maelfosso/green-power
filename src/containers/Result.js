@@ -4,10 +4,16 @@ import PropTypes from 'prop-types';
 
 /**
  * Contrat d'abo
- * 300 - 500 - 0 - mtbt - non
+ * 80 - 160 - 0 - 1 - 2
  * 
  * Facture
- * 348 - 52567 - 2740 - 54300 - 2984
+ * 52 - 23381 - 6645 - 16271 - 3844
+ * 
+ * Contrat d'abo
+ * 40 - 160 - 160 - mtbt - oui
+ * 
+ * Facture
+ * 5 - 1013 - 232 - 93 - 14
  */
 import {
   Row, Col, Typography,
@@ -70,7 +76,7 @@ const Result = props => {
           </Row>
           <Row justify="space-between">
             <Col>Cos phi</Col>
-            <Col>{cosphi.toFixed(2)}</Col>
+            <Col>{cosphi}</Col>
           </Row>
           <Row justify="space-between">
             <Col>% Cos phi Extra</Col>
@@ -117,7 +123,7 @@ const Result = props => {
             <Col>{pfr}</Col>
           </Row>
           <Row justify="space-between">
-            <Col>Pertes variables HTP (kwh)</Col>
+            <Col>Pertes variables HP (kwh)</Col>
             <Col>{pvh}</Col>
           </Row>
           <Row justify="space-between">
@@ -156,13 +162,13 @@ const Result = props => {
           <Col xs={24} md={2}>
             <Row span={24}>
               <Col xs={12} md={0}><Text strong>Tarif</Text></Col>
-              <Col xs={12} md={24}><Text>70</Text></Col>
+              <Col xs={12} md={24}><Text>{khp}</Text></Col>
             </Row>
           </Col>
           <Col xs={24} md={5}>
             <Row span={24}>
               <Col xs={12} md={0}><Text strong>Montant (CFA)</Text></Col>
-              <Col xs={12} md={24}><Text>{ eahp * 70 }</Text></Col>
+              <Col xs={12} md={24}><Text>{ eahp * khp }</Text></Col>
             </Row>
           </Col>
           <Col xs={24} md={5}>
@@ -184,23 +190,23 @@ const Result = props => {
           <Col xs={24} md={2}><Text>85</Text></Col>
           <Col xs={24} md={5}><Text>{eap * 85}</Text></Col>
           <Col xs={24} md={5}><Text>Extra 10% Franche pouvoir public</Text></Col>
-          <Col xs={24} md={5}><Text>{fht.toFixed(2)}</Text></Col>
+          <Col xs={24} md={5}><Text></Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Pertes fer (kwh)</Text></Col>
           <Col xs={24} md={2}><Text>{pfr}</Text></Col>
-          <Col xs={24} md={2}><Text>70</Text></Col>
-          <Col xs={24} md={5}><Text>{pfr * 70}</Text></Col>
+          <Col xs={24} md={2}><Text>{khp}</Text></Col>
+          <Col xs={24} md={5}><Text>{pfr * khp}</Text></Col>
           <Col xs={24} md={5}><Text>Montant total hors taxes</Text></Col>
-          <Col xs={24} md={5}><Text>{tva.toFixed(2)}</Text></Col>
+          <Col xs={24} md={5}><Text>{fht.toFixed(0)}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Pertes variables hp (kwh)</Text></Col>
           <Col xs={24} md={2}><Text>{pvh}</Text></Col>
-          <Col xs={24} md={2}><Text>70</Text></Col>
-          <Col xs={24} md={5}><Text>{pvh * 70}</Text></Col>
+          <Col xs={24} md={2}><Text>{khp}</Text></Col>
+          <Col xs={24} md={5}><Text>{pvh * khp}</Text></Col>
           <Col xs={24} md={5}><Text>Taxes</Text></Col>
-          <Col xs={24} md={5}><Text>-</Text></Col>
+          <Col xs={24} md={5}><Text>{tva.toFixed(0)}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Pertes variables p (Kwh)</Text></Col>
@@ -208,28 +214,28 @@ const Result = props => {
           <Col xs={24} md={2}><Text>85</Text></Col>
           <Col xs={24} md={5}><Text>{pvp * 85}</Text></Col>
           <Col xs={24} md={5}><Text>Autres/Others</Text></Col>
-          <Col xs={24} md={5}><Text>{fht.toFixed(2)}</Text></Col>
+          <Col xs={24} md={5}><Text>-</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Location compteur</Text></Col>
-          <Col xs={24} md={2}><Text>{lc}</Text></Col>
-          <Col xs={24} md={2}><Text>0</Text></Col>
-          <Col xs={24} md={5}><Text>-</Text></Col>
+          <Col xs={24} md={2}><Text/></Col>
+          <Col xs={24} md={2}><Text/></Col>
+          <Col xs={24} md={5}><Text>{lc}</Text></Col>
           <Col xs={24} md={5}><Text>Montant hors taxes</Text></Col>
-          <Col xs={24} md={5}><Text /></Col>
+          <Col xs={24} md={5}><Text>{fht.toFixed(0)}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Location transformateurs</Text></Col>
           <Col xs={24} md={2}><Text /></Col>
-          <Col xs={24} md={2}><Text>{lt}</Text></Col>
+          <Col xs={24} md={2}><Text/></Col>
           <Col xs={24} md={5}><Text>{lt}</Text></Col>
           <Col xs={24} md={5}><Text>TVA sur Autres</Text></Col>
-          <Col xs={24} md={5}><Text>{tva.toFixed(2)}</Text></Col>
+          <Col xs={24} md={5}><Text>{tva.toFixed(0)}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Prime fixe</Text></Col>
-          <Col xs={24} md={2}><Text /></Col>
-          <Col xs={24} md={2}><Text>{pf}</Text></Col>
+          <Col xs={24} md={2}><Text>{pscrite}</Text></Col>
+          <Col xs={24} md={2}><Text>3700</Text></Col>
           <Col xs={24} md={5}><Text>{pf}</Text></Col>
           <Col xs={24} md={5}><Text />TVA client</Col>
           <Col xs={24} md={5}><Text /></Col>
@@ -273,8 +279,8 @@ const Result = props => {
         <Row>
           <Col xs={24} md={5}><Text>Penalites pour mauvais F.P.</Text></Col>
           <Col xs={24} md={2}><Text /></Col>
-          <Col xs={24} md={2}><Text>{pfp}</Text></Col>
-          <Col xs={24} md={5}><Text>{pfp}</Text></Col>
+          <Col xs={24} md={2}><Text>{pfp.toFixed(0)}</Text></Col>
+          <Col xs={24} md={5}><Text>{pfp.toFixed(0)}</Text></Col>
           <Col xs={24} md={5} />
           <Col xs={24} md={5} />
         </Row>

@@ -39,6 +39,10 @@ const DataEntry = props => {
     });
   };
 
+  const componentDidMount = () => {
+    contratForm.getFieldError('pscrite').setValue(300);
+  }
+
   return (
     <div className="Data-Entry">
       <Card title="CONTRAT D'ABONNEMENT">
@@ -56,23 +60,21 @@ const DataEntry = props => {
           <Form.Item required
             label="Puissance souscrite (KW)"
             name="pscrite"
-            initialValues={300}
+            defaultValue={300}
           >
             <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')} />
           </Form.Item>
           <Form.Item required
             label="Puissance transformateur (KVA)"
             name="ptrans"
-            initialValues={500}
           >
-            <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
+            <InputNumber value="500" formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
           </Form.Item>
           <Form.Item required
             label="Puissance facturee (KVA)"
             name="ptfact"
-            initialValues={0}
           >
-            <InputNumber initialValues={0} formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
+            <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
           </Form.Item>
           <Form.Item required label="Type contrat" name="typecontrat">
             <Radio.Group>
