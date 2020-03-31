@@ -62,9 +62,7 @@ const dataReducer = (state = initialState, action) => {
       } else {
         cosphi = 1;
       }
-      console.log(cosphi);
       cosphi = +cosphi.toFixed(2); 
-      console.log(cosphi);
 
       const rp = Math.ceil(facture.ipower / 5.0) * 5;
       const lt = contrat.loctrans === 'oui' ? Math.max(29 * contrat.ptfact + 6700, 9600) : 0.0;
