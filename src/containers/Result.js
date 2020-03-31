@@ -2,6 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+/**
+ * Contrat d'abo
+ * 300 - 500 - 0 - mtbt - non
+ * 
+ * Facture
+ * 348 - 52567 - 2740 - 54300 - 2984
+ */
 import {
   Row, Col, Typography,
 } from 'antd';
@@ -17,7 +24,7 @@ const Result = props => {
   } = results;
   const {
     rp, lc, lt, pf,
-    pdp, pfr, pvh, pvp,
+    dp, pdp, pfr, pvh, pvp,
     nbh, khp, phiX, bcfp,
     pfp, fht, ftt, cosphi,
   } = details;
@@ -25,7 +32,7 @@ const Result = props => {
     erahp, erap, eahp, eap, ipower,
   } = facture;
   const {
-    pscrite, pstrans, typecontrat, loctrans,
+    pscrite, ptrans, ptfact, typecontrat, loctrans,
   } = contrat;
 
 
@@ -33,12 +40,19 @@ const Result = props => {
     <div className="Result">
       <div className="section-0 margin-bottom">
         <Row>
-          <Col xs={12} sm={12} md={8}><Text strong>ENERGIE Consommee HP</Text></Col>
-          <Col xs={12} sm={12} md={16} className="text-center text-md-right">{eahp}</Col>
+          <Col xs={8} sm={8} md={8}></Col>
+          <Col xs={8} sm={8} md={8}><Text strong>Energies actives</Text></Col>
+          <Col xs={8} sm={8} md={8}><Text strong>Energies reactives</Text></Col>
         </Row>
         <Row>
-          <Col xs={12} sm={12} md={8}><Text strong>ENERGIE Consommee P</Text></Col>
-          <Col xs={12} sm={12} md={16} className="text-center text-md-right">{eap}</Col>
+          <Col xs={8} sm={8} md={8}><Text strong>Hors Point</Text></Col>
+          <Col xs={8} sm={8} md={8} className="text-md-right">{eahp}</Col>
+          <Col xs={8} sm={8} md={8} className="text-md-right">{erahp}</Col>
+        </Row>
+        <Row>
+          <Col xs={8} sm={8} md={8}><Text strong>Pointe</Text></Col>
+          <Col xs={8} sm={8} md={8} className="text-md-right">{eap}</Col>
+          <Col xs={8} sm={8} md={8} className="text-md-right">{erap}</Col>
         </Row>
       </div>
 
@@ -48,7 +62,7 @@ const Result = props => {
 
           <Row justify="space-between">
             <Col>Nombre d`heures d`utilisation (Hrs)</Col>
-            <Col>152</Col>
+            <Col>{nbh}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Cote compteur</Col>
@@ -56,11 +70,11 @@ const Result = props => {
           </Row>
           <Row justify="space-between">
             <Col>Cos phi</Col>
-            <Col>{cosphi}</Col>
+            <Col>{cosphi.toFixed(2)}</Col>
           </Row>
           <Row justify="space-between">
             <Col>% Cos phi Extra</Col>
-            <Col>{phiX}</Col>
+            <Col>{phiX.toFixed(2) * 100}</Col>
           </Row>
         </Col>
         <Col xs={24} sm={12} md={8}>
@@ -84,7 +98,7 @@ const Result = props => {
           </Row>
           <Row justify="space-between">
             <Col>Depassement de puissance (Kw)</Col>
-            <Col>0</Col>
+            <Col>{dp}</Col>
           </Row>
         </Col>
         <Col xs={24} sm={12} md={8}>
@@ -92,11 +106,11 @@ const Result = props => {
 
           <Row justify="space-between">
             <Col>Puissance Transformateurs (kva)</Col>
-            <Col>{lt}</Col>
+            <Col>{ptrans}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Puissance Facturee (kva)</Col>
-            <Col>{lc}</Col>
+            <Col>{ptfact}</Col>
           </Row>
           <Row justify="space-between">
             <Col>Pertes Fer (kwh)</Col>
@@ -123,8 +137,8 @@ const Result = props => {
           <Col md={5}>Montant (CFA)</Col>
         </Row>
         <Row span={24} gutter={8}>
-          <Col xs={{ span: 19, offset: 0}} md={{ span: 5, offset:14}}>Extra 10% zone Franche client</Col>
-          <Col md={5}>0</Col>
+          {/* <Col xs={{ span: 19, offset: 0}} md={{ span: 5, offset:14}}>Extra 10% zone Franche client</Col>
+          <Col md={5}>0</Col> */}
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}>
@@ -154,7 +168,7 @@ const Result = props => {
           <Col xs={24} md={5}>
             <Row span={24}>
               <Col xs={12} md={0}><Text strong>Montant a Payer</Text></Col>
-              <Col xs={12} md={24}><Text>Extra 10% Franche pouvoir public</Text></Col>
+              <Col xs={12} md={24}><Text>Extra 10% zone Franche client</Text></Col>
             </Row>
           </Col>
           <Col xs={24} md={5}>
@@ -169,7 +183,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text>{eap}</Text></Col>
           <Col xs={24} md={2}><Text>85</Text></Col>
           <Col xs={24} md={5}><Text>{eap * 85}</Text></Col>
-          <Col xs={24} md={5}><Text>Montant total hors taxes</Text></Col>
+          <Col xs={24} md={5}><Text>Extra 10% Franche pouvoir public</Text></Col>
           <Col xs={24} md={5}><Text>{fht}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
@@ -177,7 +191,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text>{pfr}</Text></Col>
           <Col xs={24} md={2}><Text>70</Text></Col>
           <Col xs={24} md={5}><Text>{pfr * 70}</Text></Col>
-          <Col xs={24} md={5}><Text>Taxes</Text></Col>
+          <Col xs={24} md={5}><Text>Montant total hors taxes</Text></Col>
           <Col xs={24} md={5}><Text>{tva}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
@@ -185,7 +199,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text>{pvh}</Text></Col>
           <Col xs={24} md={2}><Text>70</Text></Col>
           <Col xs={24} md={5}><Text>{pvh * 70}</Text></Col>
-          <Col xs={24} md={5}><Text>Autres/Others</Text></Col>
+          <Col xs={24} md={5}><Text>Taxes</Text></Col>
           <Col xs={24} md={5}><Text>-</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
@@ -193,7 +207,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text>{pvp}</Text></Col>
           <Col xs={24} md={2}><Text>85</Text></Col>
           <Col xs={24} md={5}><Text>{pvp * 85}</Text></Col>
-          <Col xs={24} md={5}><Text>Montant hors taxes</Text></Col>
+          <Col xs={24} md={5}><Text>Autres/Others</Text></Col>
           <Col xs={24} md={5}><Text>{fht}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
@@ -201,7 +215,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text>{lc}</Text></Col>
           <Col xs={24} md={2}><Text>0</Text></Col>
           <Col xs={24} md={5}><Text>-</Text></Col>
-          <Col xs={24} md={5}><Text>TVA sur Autres</Text></Col>
+          <Col xs={24} md={5}><Text>Montant hors taxes</Text></Col>
           <Col xs={24} md={5}><Text /></Col>
         </Row>
         <Row span={24} gutter={8}>
@@ -209,7 +223,7 @@ const Result = props => {
           <Col xs={24} md={2}><Text /></Col>
           <Col xs={24} md={2}><Text>{lt}</Text></Col>
           <Col xs={24} md={5}><Text>{lt}</Text></Col>
-          <Col xs={24} md={5}><Text>TVA client</Text></Col>
+          <Col xs={24} md={5}><Text>TVA sur Autres</Text></Col>
           <Col xs={24} md={5}><Text>{tva}</Text></Col>
         </Row>
         <Row span={24} gutter={8}>
@@ -217,19 +231,37 @@ const Result = props => {
           <Col xs={24} md={2}><Text /></Col>
           <Col xs={24} md={2}><Text>{pf}</Text></Col>
           <Col xs={24} md={5}><Text>{pf}</Text></Col>
-          <Col xs={24} md={5}><Text /></Col>
+          <Col xs={24} md={5}><Text />TVA client</Col>
           <Col xs={24} md={5}><Text /></Col>
         </Row>
         <Row span={24} gutter={8}>
           <Col xs={24} md={5}><Text>Depassement de puissance</Text></Col>
-          <Col xs={24} md={2}><Text /></Col>
-          <Col xs={24} md={2}><Text>0</Text></Col>
+          <Col xs={24} md={2}><Text>{dp}</Text></Col>
+          <Col xs={24} md={2}><Text>{pdp}</Text></Col>
           <Col xs={24} md={5}><Text>-</Text></Col>
-          <Col xs={24} md={5}><Text>MONTANT TOTAL FACTURE</Text></Col>
-          <Col xs={24} md={5}><Text>{ftt}</Text></Col>
+          <Col xs={24} md={5}>
+            {/* <Text>MONTANT TOTAL FACTURE</Text> */}
+          </Col>
+          <Col xs={24} md={5}>
+            {/* <Text>{ftt}</Text> */}
+          </Col>
         </Row>
-      </div>
-      <div className="section-3">
+        <Row span={24} gutter={8}>
+          <Col xs={24} md={5}>
+            {/* <Text>Depassement de puissance</Text> */}
+            </Col>
+          <Col xs={24} md={2}>
+            {/* <Text />{dp} */}
+            </Col>
+          <Col xs={24} md={2}>
+            {/* <Text>{pdp}</Text> */}
+            </Col>
+          <Col xs={24} md={5}>
+            {/* <Text>-</Text> */}
+            </Col>
+          <Col xs={24} md={5}><Text strong>MONTANT TOTAL FACTURE</Text></Col>
+          <Col xs={24} md={5}><Text strong>{ftt}</Text></Col>
+        </Row>
         <Row>
           <Col xs={24} md={5}><Text>Base de calcul (mauvais FP)</Text></Col>
           <Col xs={24} md={2}><Text /></Col>
@@ -265,6 +297,7 @@ Result.propTypes = {
     lc: PropTypes.number.isRequired,
     lt: PropTypes.number.isRequired,
     pf: PropTypes.number.isRequired,
+    dp: PropTypes.number.isRequired,
     pdp: PropTypes.number.isRequired,
     pfr: PropTypes.number.isRequired,
     pvh: PropTypes.number.isRequired,
@@ -286,7 +319,8 @@ Result.propTypes = {
   }).isRequired,
   contrat: PropTypes.shape({
     pscrite: PropTypes.number.isRequired,
-    pstrans: PropTypes.number.isRequired,
+    ptrans: PropTypes.number.isRequired,
+    ptfact: PropTypes.number.isRequired,
     typecontrat: PropTypes.string.isRequired,
     loctrans: PropTypes.string.isRequired,
   }).isRequired,

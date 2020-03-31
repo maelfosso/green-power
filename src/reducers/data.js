@@ -6,6 +6,7 @@ const initialState = {
     lc: 0,
     lt: 0,
     pf: 0,
+    dp: 0,
     pdp: 0,
     pfr: 0,
     pvh: 0,
@@ -29,7 +30,7 @@ const initialState = {
   },
 
   fcontrat: {
-    pscrite: 0, pstrans: 0, typecontrat: '', loctrans: '',
+    pscrite: 0, ptrans: 0, ptfact:0, typecontrat: '', loctrans: '',
   },
 
 };
@@ -40,33 +41,37 @@ const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case CALCULATE: {
       const { contrat, facture } = action.inputs;
+      console.log(contrat, facture);
 
       const { lc } = state.details;
 
       let cosphi;
-      if (contrat.loctrans === 'mt_mt') {
+      console.log("cosphi", contrat.typecontrat);
+      if (contrat.typecontrat === "mt_mt") {
         cosphi = Math.cos(
           Math.atan(
-            (facture.erahp + facture.erap) / (facture.eahp + facture.eap)
+            ((facture.erahp + facture.erap) / (facture.eahp + facture.eap))
               + 0.01,
           ),
         );
-      } else if (contrat.loctrans === 'mt_bt') {
+      } else if (contrat.typecontrat === "mt_bt") {
         cosphi = Math.cos(
           Math.atan(
-            (facture.erahp + facture.erap) / (facture.eahp + facture.eap)
+            ((facture.erahp + facture.erap) / (facture.eahp + facture.eap))
               + 0.125,
           ),
         );
       } else {
-        cosphi = 0.0;
+        cosphi = 1;
       }
-      cosphi = Math.ceil(cosphi, 2);
+      console.log(cosphi);
+      // cosphi = Math.ceil(cosphi, 2);
 
       const rp = Math.ceil(facture.ipower / 5.0) * 5;
       const lt = contrat.loctrans === 'oui' ? Math.max(29 * contrat.ptfact + 6700, ...[0, 9600]) : 0.0;
       const pf = Math.max(contrat.pscrite) * 3700;
-      const pdp = (rp > contrat.pscrite ? rp - contrat.pscrite : 0) * 3700;
+      const dp = rp > contrat.pscrite ? rp - contrat.pscrite : 0;
+      const pdp = dp * 3700;
       const pfr = contrat.typecontrat === 'mt_bt' ? contrat.ptrans * 0.01 * 720 : 0;
       const pvh = contrat.typecontrat === 'mt_bt' ? Math.round(0.03 * facture.eahp, 0) : 0;
       const pvp = contrat.typecontrat === 'mt_bt' ? Math.round(0.03 * facture.eap, 0) : 0;
@@ -108,6 +113,7 @@ const dataReducer = (state = initialState, action) => {
           lc,
           lt,
           pf,
+          dp,
           pdp,
           pfr,
           pvh,

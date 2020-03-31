@@ -53,31 +53,31 @@ const DataEntry = props => {
           }}
           size={componentSize}
         >
-          <Form.Item
+          <Form.Item required
             label="Puissance souscrite (KW)"
             name="pscrite"
           >
             <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')} />
           </Form.Item>
-          <Form.Item
+          <Form.Item required
             label="Puissance transformateur (KVA)"
             name="ptrans"
           >
             <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
           </Form.Item>
-          <Form.Item
+          <Form.Item required
             label="Puissance facturee (KVA)"
             name="ptfact"
           >
             <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
           </Form.Item>
-          <Form.Item label="Type contrat" name="typecontrat">
+          <Form.Item required label="Type contrat" name="typecontrat">
             <Radio.Group>
               <Radio.Button value="mt_bt">MT/BT</Radio.Button>
               <Radio.Button value="mt_mt">MT/MT</Radio.Button>
             </Radio.Group>
           </Form.Item>
-          <Form.Item label="Location transfo" name="loctrans">
+          <Form.Item required label="Location transfo" name="loctrans">
             <Radio.Group>
               <Radio value="oui">Oui</Radio>
               <Radio value="non">Non</Radio>
@@ -97,22 +97,22 @@ const DataEntry = props => {
           }}
           size={componentSize}
         >
-          <Form.Item label="Indicateur de puissance" name="ipower">
+          <Form.Item required label="Indicateur de puissance" name="ipower">
             <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')} />
           </Form.Item>
-          <Form.Item label="Energie active HP" name="eahp">
-            <InputNumber />
+          <Form.Item required label="Energie active HP" name="eahp">
+            <InputNumber formatter={value => `${value} KWh`} parser={value => value.replace(' KWh', '')} />
           </Form.Item>
-          <Form.Item label="Energie active P" name="eap">
-            <InputNumber />
+          <Form.Item required label="Energie active P" name="eap">
+            <InputNumber formatter={value => `${value} KWh`} parser={value => value.replace(' KWh', '')}/>
           </Form.Item>
-          <Form.Item label="Energie reactive HP" name="erahp">
-            <InputNumber />
+          <Form.Item required label="Energie reactive HP" name="erahp">
+            <InputNumber formatter={value => `${value} Kvarh`} parser={value => value.replace(' Kvarh', '')}/>
           </Form.Item>
-          <Form.Item label="Energie reactive P" name="erap">
-            <InputNumber />
+          <Form.Item required label="Energie reactive P" name="erap">
+            <InputNumber formatter={value => `${value} Kvarh`} parser={value => value.replace(' Kvarh', '')}/>
           </Form.Item>
-        </Form>
+        </Form> 
       </Card>
       <div className="submit">
         <Button type="primary" block onClick={onCalculate}>Calculate</Button>
