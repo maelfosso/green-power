@@ -62,19 +62,19 @@ const DataEntry = props => {
             name="pscrite"
             defaultValue={300}
           >
-            <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')} />
+            <InputNumber />
           </Form.Item>
           <Form.Item required
             label="Puissance transformateur (KVA)"
             name="ptrans"
           >
-            <InputNumber value="500" formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
+            <InputNumber />
           </Form.Item>
           <Form.Item required
             label="Puissance facturee (KVA)"
             name="ptfact"
           >
-            <InputNumber formatter={value => `${value} KVA`} parser={value => value.replace(' KVA', '')} />
+            <InputNumber />
           </Form.Item>
           <Form.Item required label="Type contrat" name="typecontrat">
             <Radio.Group>
@@ -103,19 +103,19 @@ const DataEntry = props => {
           size={componentSize}
         >
           <Form.Item required label="Indicateur de puissance" name="ipower">
-            <InputNumber formatter={value => `${value} KW`} parser={value => value.replace(' KW', '')} />
+            <InputNumber />
           </Form.Item>
-          <Form.Item required label="Energie active HP" name="eahp">
-            <InputNumber formatter={value => `${value} KWh`} parser={value => value.replace(' KWh', '')} />
+          <Form.Item required label="Energie active HP (KWh)" name="eahp">
+            <InputNumber />
           </Form.Item>
-          <Form.Item required label="Energie active P" name="eap">
-            <InputNumber formatter={value => `${value} KWh`} parser={value => value.replace(' KWh', '')}/>
+          <Form.Item required label="Energie active P (KWh)" name="eap">
+            <InputNumber />
           </Form.Item>
-          <Form.Item required label="Energie reactive HP" name="erahp">
-            <InputNumber formatter={value => `${value} Kvarh`} parser={value => value.replace(' Kvarh', '')}/>
+          <Form.Item required label="Energie reactive HP (KVARh)" name="erahp">
+            <InputNumber />
           </Form.Item>
-          <Form.Item required label="Energie reactive P" name="erap">
-            <InputNumber formatter={value => `${value} Kvarh`} parser={value => value.replace(' Kvarh', '')}/>
+          <Form.Item required label="Energie reactive P (KVARh)" name="erap">
+            <InputNumber />
           </Form.Item>
         </Form> 
       </Card>
